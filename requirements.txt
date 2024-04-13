@@ -1,4 +1,4 @@
 av~=11.0.0
 ultralytics~=8.1.47
 opencv-python~=4.9.0.80
-torch~=1.33.0
+torch~=2.2.2
