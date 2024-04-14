@@ -4,6 +4,8 @@ from ultralytics import YOLO
 import cv2
 import os
 from twilio.rest import Client
+from twilio.base.exceptions import TwilioRestException
+
 
 model = YOLO('./best.pt')
 
