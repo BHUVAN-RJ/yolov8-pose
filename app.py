@@ -6,8 +6,8 @@ import os
 from twilio.rest import Client
 
 model = YOLO('best.pt')
-account_sid = os.environ['AC8245296ff225857167385ceb729da84f']
-auth_token = os.environ['9d69dabe647300cb97294579fb4b6284']
+account_sid = 'AC8245296ff225857167385ceb729da84f'
+auth_token = '9d69dabe647300cb97294579fb4b6284'
 client = Client(account_sid, auth_token)
 
 token = client.tokens.create()
