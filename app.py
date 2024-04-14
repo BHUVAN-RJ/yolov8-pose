@@ -46,7 +46,7 @@ def video_frame_callback(frame):
 
 
 webrtc_streamer(key="example", video_frame_callback=video_frame_callback, rtc_configuration={
-        "iceServers": token.ice_servers,
+        "iceServers": get_ice_servers(),
         "iceTransportPolicy": "relay",
     },media_stream_constraints={"video": True, "audio": False},
     async_processing=True)
