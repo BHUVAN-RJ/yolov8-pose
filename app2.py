@@ -40,9 +40,10 @@ def get_ice_servers():
 
 def video_frame_callback(frame):
     img = frame.to_ndarray(format="bgr24")
+    img = cv2.resize(img, (256, 256))
 
 
-    results = model(cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA))[0]
+    results = model(img)[0]
 
     for result in results:
 
