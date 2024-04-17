@@ -13,7 +13,7 @@ fontScale = 1
 color = (255, 0, 0)  # Blue color in BGR
 thickness = 2
 
-model = YOLO('./best.pt')
+model = YOLO('./yolov8n-pose.pt')
 
 def get_ice_servers():
     try:
