@@ -48,9 +48,7 @@ def video_frame_callback(frame):
         for outer_index, keypoints_batch in enumerate(result.keypoints.xy.tolist()):
 
             for inner_index, keypoint in enumerate(keypoints_batch):
-                text = f'{img.shape()}'
                 cv2.circle(img, (int(keypoint[0]), int(keypoint[1])), radius=3, color=(0, 0, 255), thickness=-1)
-                cv2.putText(img, text, org, font, fontScale, color, thickness)
 
 
     return av.VideoFrame.from_ndarray(img, format="bgr24")
