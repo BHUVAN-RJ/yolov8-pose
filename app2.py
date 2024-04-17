@@ -40,8 +40,7 @@ def get_ice_servers():
 
 def video_frame_callback(frame):
     img = frame.to_ndarray(format="bgr24")
-    text1 = f'frame:{type(frame)}'
-    text2 = f'frame:{type(img)}'
+
 
     results = model(img)[0]
 
@@ -51,8 +50,7 @@ def video_frame_callback(frame):
 
             for inner_index, keypoint in enumerate(keypoints_batch):
                 cv2.circle(img, (int(keypoint[0]), int(keypoint[1])), radius=3, color=(0, 0, 255), thickness=-1)
-                cv2.putText(image, text1, org, font, fontScale, color, thickness)
-                cv2.putText(image, text2, org, font, fontScale, color, thickness)
+
 
 
     return av.VideoFrame.from_ndarray(img, format="bgr24")
