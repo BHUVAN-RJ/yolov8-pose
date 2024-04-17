@@ -7,6 +7,11 @@ import os
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
 
+font = cv2.FONT_HERSHEY_SIMPLEX
+org = (50, 50)  # Coordinates of the bottom-left corner
+fontScale = 1
+color = (255, 0, 0)  # Blue color in BGR
+thickness = 2
 
 model = YOLO('./best.pt')
 
@@ -33,11 +38,8 @@ def get_ice_servers():
     return token.ice_servers
 
 
-def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
+def video_frame_callback(frame):
     img = frame.to_ndarray(format="bgr24")
-    st.text(f'1:{img.shape()}')
-    img = cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
-    st.text(f'{img.shape()}')
 
     results = model(img)[0]
 
@@ -46,7 +48,10 @@ def video_frame_callback(frame: av.VideoFrame) -> av.VideoFrame:
         for outer_index, keypoints_batch in enumerate(result.keypoints.xy.tolist()):
 
             for inner_index, keypoint in enumerate(keypoints_batch):
+                text = f'{img.shape()}'
                 cv2.circle(img, (int(keypoint[0]), int(keypoint[1])), radius=3, color=(0, 0, 255), thickness=-1)
+                cv2.putText(img, text, org, font, fontScale, color, thickness)
+
 
     return av.VideoFrame.from_ndarray(img, format="bgr24")
 
