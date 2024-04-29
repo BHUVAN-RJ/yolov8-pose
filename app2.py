@@ -40,7 +40,7 @@ def get_ice_servers():
 
 def video_frame_callback(frame):
     img = frame.to_ndarray(format="bgr24")
-    img = cv2.resize(img, (256, 256))
+    # img = cv2.resize(img, (256, 256))
 
 
     results = model(img, conf=0.7)[0]
