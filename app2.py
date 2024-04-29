@@ -43,7 +43,7 @@ def video_frame_callback(frame):
     img = cv2.resize(img, (256, 256))
 
 
-    results = model(img)[0]
+    results = model(img, conf=0.7)[0]
 
     for result in results:
 
